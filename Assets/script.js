@@ -1,20 +1,3 @@
-/*Process
-
-1. Open index
-2 Display Home page
-3 Click button starts quiz
-4 Hides home page and timer starts
-5. Displays 1st question and possible answers
-6. Answer is clicked.
-7. next question is displayed
-7. user is informed if previous answer is correct
-8. If incorrect answer was chosen, 5 seconds is removed from timer
-9. repeated for 3 more questions.
-10. after answering final question score is reveal.
-11. user inputs name.
-12. score, time and name is recorded and displayed in high score page
-*/
-
 
 //Home page DOM Elements
 
@@ -29,15 +12,21 @@ var question2EL = document.getElementById('quiz-questions-2');
 var question3EL = document.getElementById('quiz-questions-3');
 var question4EL = document.getElementById('quiz-questions-4');
 var question5EL = document.getElementById('quiz-questions-5');
+var userInitialsEl = document.getElementById('initials');
 
+// Global Variables
 
 var secondsLeft = 60;
 var currentQuestion = {};
 var availableQuestions= [];
 var questionCounter = 0;
+var score = 0
 
+// Global Variables
 
 startButtonEl.addEventListener("click", startQuiz);
+
+// Questions Display
 
 quizEndEl.style.display = 'none'
 question1EL.style.display = 'none'
@@ -45,6 +34,9 @@ question2EL.style.display = 'none'
 question3EL.style.display = 'none'
 question4EL.style.display = 'none'
 question5EL.style.display = 'none'
+
+
+// Timer function
 
 function startTimer () {
     // Sets interval in variable
@@ -56,11 +48,14 @@ function startTimer () {
         // Stops execution of action at set interval
         clearInterval(timerInterval);
         // Calls function to create and append image
-        endOfQuiz();
+        outOfTime();
       }
   
     }, 1000);
 }
+
+
+// Quiz beginning function
 
 function startQuiz() {
     homePageEl.style.display = "none";
@@ -77,6 +72,7 @@ function startQuiz() {
 function correctquestion1() {
     question1EL.style.display = "none";
     question2EL.style.display = "block";
+    score = score + 1;
 
     document.getElementById("q2-answer3").onclick = correctquestion2;
     document.getElementById("q2-answer1").onclick = incorrectquestion2;
@@ -99,7 +95,7 @@ function incorrectquestion1() {
 function correctquestion2() {
     question2EL.style.display = "none";
     question3EL.style.display = "block";
-    
+    score = score + 1;
     
     document.getElementById("q3-answer4").onclick = correctquestion3;
     document.getElementById("q3-answer1").onclick = incorrectquestion3;
@@ -113,18 +109,19 @@ function incorrectquestion2() {
     question2EL.style.display = "none";
     question3EL.style.display = "block";
 
-    document.getElementById("q3-answer3").onclick = correctquestion3;
+    document.getElementById("q3-answer4").onclick = correctquestion3;
     document.getElementById("q3-answer1").onclick = incorrectquestion3;
     document.getElementById("q3-answer2").onclick = incorrectquestion3;
-    document.getElementById("q3-answer4").onclick = incorrectquestion3;
+    document.getElementById("q3-answer3").onclick = incorrectquestion3;
 
 }
     
 function correctquestion3() {
     question3EL.style.display = "none";
     question4EL.style.display = "block";
+    score = score + 1;
     
-    document.getElementById("q4-answer4").onclick = correctquestion4;
+    document.getElementById("q4-answer3").onclick = correctquestion4;
     document.getElementById("q4-answer1").onclick = incorrectquestion4;
     document.getElementById("q4-answer2").onclick = incorrectquestion4;
     document.getElementById("q4-answer4").onclick = incorrectquestion4;
@@ -136,7 +133,8 @@ function incorrectquestion3() {
     question4EL.style.display = "block";
 
 
-    document.getElementById("q4-answer4").onclick = correctquestion4;
+
+    document.getElementById("q4-answer3").onclick = correctquestion4;
     document.getElementById("q4-answer1").onclick = incorrectquestion4;
     document.getElementById("q4-answer2").onclick = incorrectquestion4;
     document.getElementById("q4-answer4").onclick = incorrectquestion4;
@@ -145,11 +143,12 @@ function incorrectquestion3() {
 function correctquestion4() {
     question4EL.style.display = "none";
     question5EL.style.display = "block";
+    score = score + 1;
     
-    document.getElementById("q4-answer3").onclick = correctquestion4;
-    document.getElementById("q4-answer1").onclick = incorrectquestion4;
-    document.getElementById("q4-answer2").onclick = incorrectquestion4;
-    document.getElementById("q4-answer4").onclick = incorrectquestion4;
+    document.getElementById("q5-answer4").onclick = correctquestion5;
+    document.getElementById("q5-answer1").onclick = incorrectquestion5;
+    document.getElementById("q5-answer2").onclick = incorrectquestion5;
+    document.getElementById("q5-answer3").onclick = incorrectquestion5;
     }
 
 function incorrectquestion4() {
@@ -157,12 +156,16 @@ function incorrectquestion4() {
     question4EL.style.display = "none";
     question5EL.style.display = "block";
 
-    document.getElementById("q5-answer3").onclick = endOfQuiz;
+    document.getElementById("q5-answer4").onclick = correctquestion5;
     document.getElementById("q5-answer1").onclick = incorrectquestion5;
     document.getElementById("q5-answer2").onclick = incorrectquestion5;
-    document.getElementById("q5-answer4").onclick = incorrectquestion5;
+    document.getElementById("q5-answer3").onclick = incorrectquestion5;
 }
 
+function correctquestion5() {
+    score = score + 1;
+    endOfQuiz()
+    }
 
 
 function incorrectquestion5() {
@@ -170,10 +173,31 @@ function incorrectquestion5() {
     endOfQuiz()
     }
 
-    
+ // End of quiz script   
 
 function endOfQuiz() {
+    timeEl.style.display = "none";
     quizEndEl.style.display = 'block'
     question5EL.style.display = 'none'
-   
+    document.getElementById("final-score").innerHTML =  score
 }
+
+// User has run out of time
+
+function outOfTime(){
+    question1EL.style.display = 'none'
+    question2EL.style.display = 'none'
+    question3EL.style.display = 'none'
+    question4EL.style.display = 'none'
+    question5EL.style.display = 'none'
+    timeEl.style.display = "none";
+    quizEndEl.style.display = 'block'
+    document.getElementById("final-score").innerHTML =  score
+}
+
+
+// restart function
+
+function restartQuiz(){
+    window.location.reload(true);
+} 

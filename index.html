@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="Assets/styles.css" />
 </head>
 <body>
+    <!-- Nav Bar -->
     <header class="container">
         <p><a href="highscores.html">High Score</a></p> 
         <p id ="timer">Timer: <span id='time-remaining'>60</span></p>
 
     </header>
-
+    <!-- Home page -->
    <main id = 'homepage'>
        <h1>
            Coding Quiz Challenge
@@ -26,7 +27,7 @@
        <button type = "button" class="btn" id="start-button"> Start Quiz! </button>
    
    </main>
-
+    <!-- Question 1 -->
     <section id="quiz-questions-1">
         <h2 id="question">Commonly used data types DO NOT include:</h2>
         <div id="quiz-answers">
@@ -37,6 +38,7 @@
         </div>
     </section>
     
+    <!-- Question 2 -->
    <section id="quiz-questions-2">
     <h2 id="question">The condition in an if / else statement is enclosed with _______.</h2>
     <div id="quiz-answers">
@@ -46,6 +48,7 @@
         <button class="answerbtn" id="q2-answer4">4. Square brackets</button>
     </div>
     </section>
+    <!-- Question 3 -->
     <section id="quiz-questions-3">
         <h2 id="question">Arrays in JavaScript can be used to store _______.</h2>
         <div id="quiz-answers">
@@ -55,6 +58,7 @@
             <button class="answerbtn" id="q3-answer4">4. All of the Above</button>
         </div>
     </section>
+    <!-- Question 4 -->
     <section id="quiz-questions-4">
         <h2 id="question">String values must be enclosed within _______ when being assigned to variables.</h2>
         <div id="quiz-answers">
@@ -64,10 +68,10 @@
             <button class="answerbtn" id="q4-answer4">4. Parenthesis</button>
         </div>
      </section>
-     
+    <!-- Question 5 -->
      <section id="quiz-questions-5">
         <h2 id="question">A very useful tool used during development and debugging for printing content to the debugger is:</h2>
-        <div id="quiz-answers">
+        <div class="quiz-answers">
             <button class="answerbtn" id="q5-answer1">1. JavaScript</button>
             <button class="answerbtn" id="q5-answer2">2. Terminal/Bash</button>
             <button class="answerbtn" id="q5-answer3">3. for Loops'</button>
@@ -77,15 +81,22 @@
 
         </div>
      </section>
+    <!-- Completed Quiz page-->
    <section id = "end-of-quiz">
        <h1> All Done!</h1>
-       <h2>Congratulations, Your final score is<span id="final-score"></span></h2>
+       <h2>Your final score is <span id="final-score"></span></h2>
+    
+       <p class="end-quiz-p">
+        Enter initials:
+        <input type="text" placeholder="Enter your initials" name="initials" id="initials" />
+        <button id="submit-score" class="btn">Submit</button>
+        <button id="restart-quiz" class="btn" onclick="restartQuiz()">Restart Quiz</button>
+    </p>
 
 
    </section>
 
-
-
+    <!-- Javascript Link -->
     <script src="Assets/script.js"></script>
 </body>
 </html>
