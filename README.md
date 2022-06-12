@@ -42,7 +42,9 @@ THEN I can save my initials and score
 
 Screenshot of uploaded image
 
-
+![Homepage](https://github.com/michaelclancy90/Code-quiz/blob/main/Assets/Images/home-page.png)
+![Quiz Question](https://github.com/michaelclancy90/Code-quiz/blob/main/Assets/Images/quiz-answer-page.png)
+![End of Quiz](https://github.com/michaelclancy90/Code-quiz/blob/main/Assets/Images/end-of-quiz.png)
 
 ## **References**
 
