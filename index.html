@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=
-    , initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="Assets/styles.css" />
 </head>
@@ -14,6 +13,7 @@
         <p id ="timer">Timer: <span id='time-remaining'>60</span></p>
 
     </header>
+
    <main id = 'homepage'>
        <h1>
            Coding Quiz Challenge
@@ -25,9 +25,58 @@
        </p>
        <button type = "button" class="btn" id="start-button"> Start Quiz! </button>
    
-    
    </main>
 
+    <section id="quiz-questions-1">
+        <h2 id="question">Commonly used data types DO NOT include:</h2>
+        <div id="quiz-answers">
+            <button class="answerbtn" id="q1-answer1">1. Strings</button>
+            <button class="answerbtn" id="q1-answer2">2. Booleans</button>
+            <button class="answerbtn" id="q1-answer3">3. Alerts</button>
+            <button class="answerbtn" id="q1-answer4">4. Numbers</button>
+        </div>
+    </section>
+    
+   <section id="quiz-questions-2">
+    <h2 id="question">The condition in an if / else statement is enclosed with _______.</h2>
+    <div id="quiz-answers">
+        <button class="answerbtn" id="q2-answer1">1. Quotes</button>
+        <button class="answerbtn" id="q2-answer2">2. Curly brackets</button>
+        <button class="answerbtn" id="q2-answer3">3. Parenthesis</button>
+        <button class="answerbtn" id="q2-answer4">4. Square brackets</button>
+    </div>
+    </section>
+    <section id="quiz-questions-3">
+        <h2 id="question">Arrays in JavaScript can be used to store _______.</h2>
+        <div id="quiz-answers">
+            <button class="answerbtn" id="q3-answer1">1. Numbers and Strings</button>
+            <button class="answerbtn" id="q3-answer2">2. Other Arrays</button>
+            <button class="answerbtn" id="q3-answer3">3. Booleans'</button>
+            <button class="answerbtn" id="q3-answer4">4. All of the Above</button>
+        </div>
+    </section>
+    <section id="quiz-questions-4">
+        <h2 id="question">String values must be enclosed within _______ when being assigned to variables.</h2>
+        <div id="quiz-answers">
+            <button class="answerbtn" id="q4-answer1">1. Commas</button>
+            <button class="answerbtn" id="q4-answer2">2. Curly Brackets</button>
+            <button class="answerbtn" id="q4-answer3">3. Quotes'</button>
+            <button class="answerbtn" id="q4-answer4">4. Parenthesis</button>
+        </div>
+     </section>
+     
+     <section id="quiz-questions-5">
+        <h2 id="question">A very useful tool used during development and debugging for printing content to the debugger is:</h2>
+        <div id="quiz-answers">
+            <button class="answerbtn" id="q5-answer1">1. JavaScript</button>
+            <button class="answerbtn" id="q5-answer2">2. Terminal/Bash</button>
+            <button class="answerbtn" id="q5-answer3">3. for Loops'</button>
+            <button class="answerbtn" id="q5-answer4">4. Console.log</button>
+        </div>
+        <div id="display-result">
+
+        </div>
+     </section>
    <section id = "end-of-quiz">
        <h1> All Done!</h1>
        <h2>Congratulations, Your final score is<span id="final-score"></span></h2>

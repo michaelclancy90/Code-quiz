@@ -14,41 +14,6 @@
 11. user inputs name.
 12. score, time and name is recorded and displayed in high score page
 */
-// Global Variables
-
-// Questions Arrays
-
-var question1 =  {
-    question: 'Commonly used data types DO NOT include:',
-    answers: [ 'Strings','Booleans','Alerts', 'Numbers'],
-    correctAnswer: 'Alerts'
-    }
-
-var question2 = { 
-    question:'The condition in an if / else statement is enclosed with _______.',
-    answers: [ 'Quotes','Curly brackets','Parenthesis', 'Square brackets'],
-    correctAnswer: 'Parenthesis'
-}
-
-var question3 = { 
-    question: 'Arrays in JavaScript can be used to store _______.',
-    answers: [ 'Numbers and Strings','Other Arrays','Booleans', 'All of the Above'],
-    correctAnswer: 'All of the above'
-}
-
-var question4 = { 
-    question: 'String values must be enclosed within _______ when being assigned to variables.',
-    answers: ['Commas', 'Curly Brackets', 'Quotes', 'Parenthesis'],
-    correctAnswer: 'Quotes'
-}
-
-var question5 = { 
-    question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-    answers: [ ' JavaScript', 'Terminal/Bash', 'for Loops', 'Console.log'],
-    correctAnswer: 'Console.log'
-}
-
-var secondsLeft = 5
 
 
 //Home page DOM Elements
@@ -58,13 +23,28 @@ var startButtonEl = document.getElementById('start-button')
 var quizEndEl = document.getElementById('end-of-quiz')
 var timeEl = document.getElementById('timer')
 var timeRemainingEl = document.getElementById('time-remaining');
+var answers = document.getElementsByClassName("answerbtn")
+var question1EL = document.getElementById('quiz-questions-1');
+var question2EL = document.getElementById('quiz-questions-2');
+var question3EL = document.getElementById('quiz-questions-3');
+var question4EL = document.getElementById('quiz-questions-4');
+var question5EL = document.getElementById('quiz-questions-5');
 
 
+var secondsLeft = 60;
+var currentQuestion = {};
+var availableQuestions= [];
+var questionCounter = 0;
 
 
 startButtonEl.addEventListener("click", startQuiz);
 
 quizEndEl.style.display = 'none'
+question1EL.style.display = 'none'
+question2EL.style.display = 'none'
+question3EL.style.display = 'none'
+question4EL.style.display = 'none'
+question5EL.style.display = 'none'
 
 function startTimer () {
     // Sets interval in variable
@@ -84,19 +64,116 @@ function startTimer () {
 
 function startQuiz() {
     homePageEl.style.display = "none";
-    startTimer()
-      }
+    startTimer();
 
+    question1EL.style.display = "block";
 
+    document.getElementById("q1-answer3").onclick = correctquestion1;
+    document.getElementById("q1-answer1").onclick = incorrectquestion1;
+    document.getElementById("q1-answer2").onclick = incorrectquestion1;
+    document.getElementById("q1-answer4").onclick = incorrectquestion1;
+}
 
-function endOfQuiz() {
-    quizEndEl.style.display = 'block'
+function correctquestion1() {
+    question1EL.style.display = "none";
+    question2EL.style.display = "block";
+
+    document.getElementById("q2-answer3").onclick = correctquestion2;
+    document.getElementById("q2-answer1").onclick = incorrectquestion2;
+    document.getElementById("q2-answer2").onclick = incorrectquestion2;
+    document.getElementById("q2-answer4").onclick = incorrectquestion2;
+}
+
+function incorrectquestion1() {
+    secondsLeft = secondsLeft - 10;
+    question1EL.style.display = "none";
+    question2EL.style.display = "block";
+
+    document.getElementById("q2-answer3").onclick = correctquestion2;
+    document.getElementById("q2-answer1").onclick = incorrectquestion2;
+    document.getElementById("q2-answer2").onclick = incorrectquestion2;
+    document.getElementById("q2-answer4").onclick = incorrectquestion2;
+
+}
+
+function correctquestion2() {
+    question2EL.style.display = "none";
+    question3EL.style.display = "block";
     
+    
+    document.getElementById("q3-answer4").onclick = correctquestion3;
+    document.getElementById("q3-answer1").onclick = incorrectquestion3;
+    document.getElementById("q3-answer2").onclick = incorrectquestion3;
+    document.getElementById("q3-answer3").onclick = incorrectquestion3;
+
+}
+
+function incorrectquestion2() {
+    secondsLeft = secondsLeft - 10;
+    question2EL.style.display = "none";
+    question3EL.style.display = "block";
+
+    document.getElementById("q3-answer3").onclick = correctquestion3;
+    document.getElementById("q3-answer1").onclick = incorrectquestion3;
+    document.getElementById("q3-answer2").onclick = incorrectquestion3;
+    document.getElementById("q3-answer4").onclick = incorrectquestion3;
+
+}
+    
+function correctquestion3() {
+    question3EL.style.display = "none";
+    question4EL.style.display = "block";
+    
+    document.getElementById("q4-answer4").onclick = correctquestion4;
+    document.getElementById("q4-answer1").onclick = incorrectquestion4;
+    document.getElementById("q4-answer2").onclick = incorrectquestion4;
+    document.getElementById("q4-answer4").onclick = incorrectquestion4;
+}
+
+function incorrectquestion3() {
+    secondsLeft = secondsLeft - 10;
+    question3EL.style.display = "none";
+    question4EL.style.display = "block";
+
+
+    document.getElementById("q4-answer4").onclick = correctquestion4;
+    document.getElementById("q4-answer1").onclick = incorrectquestion4;
+    document.getElementById("q4-answer2").onclick = incorrectquestion4;
+    document.getElementById("q4-answer4").onclick = incorrectquestion4;
+}
+
+function correctquestion4() {
+    question4EL.style.display = "none";
+    question5EL.style.display = "block";
+    
+    document.getElementById("q4-answer3").onclick = correctquestion4;
+    document.getElementById("q4-answer1").onclick = incorrectquestion4;
+    document.getElementById("q4-answer2").onclick = incorrectquestion4;
+    document.getElementById("q4-answer4").onclick = incorrectquestion4;
+    }
+
+function incorrectquestion4() {
+    secondsLeft = secondsLeft - 10;
+    question4EL.style.display = "none";
+    question5EL.style.display = "block";
+
+    document.getElementById("q5-answer3").onclick = endOfQuiz;
+    document.getElementById("q5-answer1").onclick = incorrectquestion5;
+    document.getElementById("q5-answer2").onclick = incorrectquestion5;
+    document.getElementById("q5-answer4").onclick = incorrectquestion5;
 }
 
 
 
+function incorrectquestion5() {
+    secondsLeft = secondsLeft - 10;
+    endOfQuiz()
+    }
 
+    
 
-
-
+function endOfQuiz() {
+    quizEndEl.style.display = 'block'
+    question5EL.style.display = 'none'
+   
+}
