@@ -48,19 +48,51 @@ var question5 = {
     correctAnswer: 'Console.log'
 }
 
+var secondsLeft = 5
+
+
 //Home page DOM Elements
 
 var homePageEl = document.getElementById('homepage')
 var startButtonEl = document.getElementById('start-button')
+var quizEndEl = document.getElementById('end-of-quiz')
+var timeEl = document.getElementById('timer')
+var timeRemainingEl = document.getElementById('time-remaining');
+
+
 
 
 startButtonEl.addEventListener("click", startQuiz);
 
-function startQuiz() {
-    homePageEl.style.display = "none";
-    
+quizEndEl.style.display = 'none'
+
+function startTimer () {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timeRemainingEl.textContent = secondsLeft
+  
+      if(secondsLeft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        // Calls function to create and append image
+        endOfQuiz();
+      }
+  
+    }, 1000);
 }
 
+function startQuiz() {
+    homePageEl.style.display = "none";
+    startTimer()
+      }
+
+
+
+function endOfQuiz() {
+    quizEndEl.style.display = 'block'
+    
+}
 
 
 

@@ -22,7 +22,7 @@ body {
     flex-direction: column;
 }
 
-main {
+main, section {
     display: flex;
     justify-content: center;
     align-items: center;
